@@ -1,0 +1,25 @@
+n = int(input())
+list = [int(x) for x in input().split()]
+counter = 0
+length = 1
+i = 0
+
+while i <= n-3:
+    for x in range(i,n-2):
+        if list[x+1] - list[x] == list[x+2] - list[x+1] and not x+3==n:
+            length += 1
+        elif list[x+1] - list[x] == list[x+2] - list[x+1] and x+3==n:
+            length += 1
+            counter += (((length)*(length+1))/2) - length
+            i += length
+            length = 1
+            break
+        else:
+            counter += (((length)*(length+1))/2) - length
+            i += length
+            length = 1
+            break
+
+counter += n
+counter += n-1
+print(int(counter))
