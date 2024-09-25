@@ -1,0 +1,24 @@
+s = list(input())
+t = list(input())
+x = len(s)
+list = []
+
+for i in range(x):
+    if s[i] > t[i]:
+        s[i] = t[i]
+        list.append("".join(s))
+
+    if s == t:
+        break
+
+for i in reversed(range(x)):
+    if s[i] < t[i]:
+        s[i] = t[i]
+        list.append("".join(s))
+
+    if s == t:
+        break
+    
+print(len(list))
+for string in list:
+    print(string)
