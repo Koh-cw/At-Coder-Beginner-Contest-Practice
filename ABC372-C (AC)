@@ -1,0 +1,39 @@
+n,q = input().split()
+slist = [*input()]
+counter = 0
+
+for index in range(int(n)-1):
+    if slist[index:index+3] == ["A","B","C"]:
+        counter += 1
+for index in range(int(q)):
+    x,c = input().split()
+    x = int(x)
+
+    if 2 < x < int(n)-1:
+        for index in range(x-3,x):
+            counter -= slist[index:index+3] == ["A","B","C"]
+        for index in range(x-3,x):
+            slist[x-1] = c
+            counter += slist[index:index+3] == ["A","B","C"]
+    elif x==2:
+        for index in range(x-2,x):
+            counter -= slist[index:index+3] == ["A","B","C"]
+        for index in range(x-2,x):
+            slist[x-1] = c
+            counter += slist[index:index+3] == ["A","B","C"]
+    elif x== int(n)-1:
+        for index in range(x-3,x):
+            counter -= slist[index:index+3] == ["A","B","C"]
+        for index in range(x-3,x):
+            slist[x-1] = c
+            counter += slist[index:index+3] == ["A","B","C"]
+    elif x==1:
+        counter -= slist[0:3] == ["A","B","C"]
+        slist[x-1] = c
+        counter += slist[0:3] == ["A","B","C"]
+    else:
+        counter -= slist[x-3:x] == ["A","B","C"]
+        slist[x-1] = c
+        counter += slist[x-3:x] == ["A","B","C"]
+
+    print(counter)
