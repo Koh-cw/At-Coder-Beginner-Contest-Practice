@@ -1,0 +1,52 @@
+h,w,q = input().split()
+list = []
+
+for i in range(int(q)):
+    r,co = input().split()
+    cell = int(r)*10 + int(co)
+    if not cell in list:
+        list.insert(0,cell)
+        continue
+
+    a = cell + 10
+    b = cell - 10
+    c = cell + 1
+    d = cell - 1
+
+    while True:
+        if a in list and a-int(co) < int(h)*10:
+            a += 10
+        elif a not in list and a-int(co) <= int(h)*10:
+            list.insert(0,a)
+            break
+        else:
+            break
+
+    while True:
+        if b in list and b-int(co) > 10:
+            b -= 10
+        elif b not in list and b-int(co) >= 10:
+            list.insert(0,b)
+            break
+        else:
+            break
+
+    while True:
+        if c in list and c-int(r)*10 < int(w):
+            c += 1
+        elif c not in list and c-int(r)*10 <= int(w):
+            list.insert(0,c)
+            break
+        else:
+            break
+
+    while True:
+        if d in list and d-int(r)*10 > 1:
+                d -= 1
+        elif d not in list and d-int(r)*10 >= 1:
+            list.insert(0,d)
+            break
+        else:
+            break
+
+print((int(h)*int(w))-int(len(list)))
