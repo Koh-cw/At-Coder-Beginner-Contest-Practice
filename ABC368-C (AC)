@@ -1,0 +1,40 @@
+n = int(input())
+health = [int(x) for x in input().split()]
+t = 0
+
+for i in range(n):
+    if t % 3 == 1:
+        if 1 < health[i] <= 4:
+            t += 2
+            continue
+        elif health[i] == 1:
+            t += 1
+            continue
+        else:
+            health[i] -= 4
+            t += 2
+    elif t % 3 == 2:
+        if health[i] <= 3:
+            t += 1
+            continue
+        else:
+            health[i] -= 3
+            t += 1
+
+    if health[i] % 5 == 0:
+        t += (health[i]/5) * 3
+        continue
+    elif health[i] % 5 == 1:
+        t += 1
+        health[i] -= 1
+        t += (health[i]/5) * 3
+    elif health[i] % 5 == 2:
+        t += 2
+        health[i] -= 2
+        t += (health[i]/5) * 3
+    else:
+        t+= 3
+        health[i] -= (health[i]%5)
+        t += (health[i]/5) * 3
+
+print(int(t))
