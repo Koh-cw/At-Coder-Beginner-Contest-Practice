@@ -1,0 +1,13 @@
+n = int(input())
+hlist = list(map(int, input().split()))
+
+count = []
+stack = []
+
+for x in hlist[::-1]:
+    count.insert(0,str(len(stack)))
+    while stack and stack[-1] < x:
+        stack.pop()
+    stack.append(x)
+
+print(*count)
