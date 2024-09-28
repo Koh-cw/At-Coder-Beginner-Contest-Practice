@@ -1,0 +1,37 @@
+from collections import defaultdict
+
+def assvalue(u, nextnode, values):
+
+    for v, w in nextnode[u]:
+        if values[v] is None:
+            values[v] = values[u] + w
+            assvalue(v, nextnode, values)
+
+
+def returnvalue(N, M, edges):
+
+    nextnode = defaultdict(list)
+
+    for u, v, w in edges:
+        nextnode[u].append((v, w))
+
+    values = [None] * (N + 1)
+
+    for i in range(1, N+1):
+        if values[i] is None:
+            values[i] = 0
+            assvalue(1, nextnode, values)
+
+    return " ".join(map(str,values[1:]))
+
+
+
+
+N,M = map(int, input().split())
+edges = []
+
+for i in range(M):
+    u, v, w = map(int, input().split())
+    edges.append((u, v, w))
+
+print(returnvalue(N,M,edges))
