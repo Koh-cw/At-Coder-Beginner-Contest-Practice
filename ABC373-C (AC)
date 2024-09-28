@@ -1,0 +1,13 @@
+n = int(input())
+alist = list(map(int, input().split()))
+blist = list(map(int, input().split()))
+a = alist[0]
+b = blist[0]
+
+for i in range(n):
+    if alist[i] >= a:
+        a = alist[i]
+    if blist[i] >= b:
+        b = blist[i]
+
+print(a+b)
