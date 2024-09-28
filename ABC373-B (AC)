@@ -1,0 +1,14 @@
+str = input().strip().upper()
+pos = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+counter = 0
+
+for i in range(26):
+    pos[ord(str[i]) - 65] = i
+
+for x in range(25):
+    if pos[x] > pos[x+1]:
+        counter += pos[x] - pos[x+1]
+    else:
+        counter += pos[x+1] - pos[x]
+
+print(counter)
