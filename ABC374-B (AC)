@@ -1,0 +1,18 @@
+s = input().strip()
+t = input().strip()
+
+lenS = len(s)
+lenT = len(t)
+
+
+MinLength = min(lenS, lenT)
+
+for i in range(MinLength):
+    if s[i] != t[i]:
+        print(i + 1)
+        break
+else:
+    if lenS != lenT:
+        print(MinLength + 1)
+    else:
+        print(0)
