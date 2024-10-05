@@ -1,0 +1,39 @@
+from itertools import combinations
+
+def GetSum(people):
+    x = len(people)
+    totalsums = []
+
+    for i in range(x+1):
+        for pair in combinations(people,i):
+            totalsums.append(sum(pair))
+    return totalsums
+
+def GetMin(n,people):
+
+    first = people[:n//2]
+    second = people[n//2:]
+
+    total = sum(people)
+    half = total // 2
+
+    FirstSums = GetSum(first)
+    SecondSums = GetSum(second)
+    FirstSums.sort()
+    SecondSums.sort()
+
+    LeastSet = float('inf')
+
+    for x in FirstSums:
+        for y in SecondSums:
+            GroupA = x+y
+            GroupB = total - GroupA
+            LargerSet = max(GroupA,GroupB)
+            LeastSet = min(LeastSet,LargerSet)
+
+    print(LeastSet)
+
+
+n = int(input())
+people = list(map(int, input().split()))
+GetMin(n,people)
